@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: jobpulse-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
+      - key: PRIMARY_SOURCE
+        value: jobicy
+      - key: FALLBACK_SOURCE
+        value: remoteok
+      - key: INGESTION_INTERVAL_MINUTES
+        value: "30"
+      - key: REQUESTS_PER_MINUTE
+        value: "30"
+      - key: MIN_REQUEST_INTERVAL_SECONDS
+        value: "2"
+      - key: MAX_RETRIES
+        value: "3"
+      - key: BACKOFF_BASE_SECONDS
+        value: "1"
+      - key: CIRCUIT_BREAKER_FAILURE_THRESHOLD
+        value: "5"
+      - key: CIRCUIT_BREAKER_COOLDOWN_SECONDS
+        value: "60"
+      - key: SANDBOX_SCENARIO
+        value: normal
+      - key: CORS_ORIGINS
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
