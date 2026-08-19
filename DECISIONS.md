@@ -13,4 +13,5 @@ The technical and personal stopping line is explicit: no CAPTCHA bypass, authent
 I chose PostgreSQL plus a lightweight in-process scheduler instead of introducing a distributed queue such as Kafka or Celery. That keeps the MVP understandable, testable, and fast to deploy while remaining focused on ingestion resilience rather than distributed infrastructure. A full-week extension would likely add a durable queue, worker pool, and more advanced retry and observability layers.
 
 ## 3. AI usage
-AI was used for architecture brainstorming, code generation assistance, debugging support, and documentation drafting. I reviewed, modified, tested, and verified the generated code before finishing this project. All generated code was reviewed, tested, modified, and verified by me.
+AI was used for architecture brainstorming, implementation assistance, debugging, test drafting, and documentation editing. I reviewed the generated changes, ran the backend test suite, verified live Jobicy and Remote OK ingestion locally, and modified the implementation during development. The final code and design decisions remain my responsibility.
+
